@@ -204,6 +204,20 @@ While we refer to cross-attention, when the queries originate from a target embe
 
 `v = y @ w_v + b_v : (S, E)`
 
+#### Extracting Attention Maps in PyTorch
+
+To extract attention maps, one simply need to do:
+```python
+mha = torch.nn.MultiheadAttention(...)
+query = ...
+key = ...
+value = ...
+
+output, attention_map = mha(query, key, value, average_attn_weights=True/False)
+```
+Depending on the value of `average_attn_weights`, the `attention_map` will/won't be averaged across heads.
+In any case, that is the maps we are looking for.
+
 
 #### Position-Wise Feed-Forward Network
 
