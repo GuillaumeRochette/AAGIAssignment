@@ -1,0 +1,23 @@
+model:
+  name: FPNSwinTransformerV2
+  backbone: swinv2_tiny_window8_256
+  pretrained: true
+loss:
+  label_smoothing: 0.0
+data:
+  crop_size: [256, 256]
+optim:
+  batch_size: 32
+  max_epochs: 15
+  lr: 1e-4
+  wd: 1e-2
+scheduler:
+  warm_up_epochs: 1
+  warm_up_factor: 1e-1
+  cosine_epochs: 14
+  cosine_factor: 1e-2
+trainer:
+  id: null
+  seed: 1
+  max_batch_size_per_gpu: 8
+  precision: 32
